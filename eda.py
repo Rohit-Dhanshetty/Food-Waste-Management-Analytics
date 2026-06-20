@@ -38,9 +38,6 @@ claims['Date'] = pd.to_datetime(claims['Timestamp']).dt.date
 claims['Month'] = pd.to_datetime(claims['Timestamp']).dt.month
 claims['Day_Name'] = pd.to_datetime(claims['Timestamp']).dt.day_name()
 
-# ==========================================
-# AAGE TUMHARA PURA EDA CODE SAME RAHEGA
-# ==========================================
 
 print("Providers shape :", providers.shape)
 print("Receivers shape :", receivers.shape)
