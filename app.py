@@ -32,8 +32,25 @@ food_type_filter = st.sidebar.selectbox(
     ["All"] + sorted(food["Food_Type"].unique().tolist())
 )
 
+city_filter = st.sidebar.selectbox(
+    "Select City",
+    ["All"] + sorted(providers["City"].unique().tolist())
+)
+
+provider_filter = st.sidebar.selectbox(
+    "Select Provider Type",
+    ["All"] + sorted(providers["Type"].unique().tolist())
+)
+
 if food_type_filter != "All":
     food = food[food["Food_Type"] == food_type_filter]
+
+if city_filter != "All":
+    providers = providers[providers["City"] == city_filter]
+
+if provider_filter != "All":
+    providers = providers[providers["Type"] == provider_filter]
+
 
 total_providers = len(providers)
 total_receivers = len(receivers)
@@ -177,7 +194,11 @@ st.markdown("---")
 
 st.subheader("📋 Food Listings Preview")
 
+st.markdown("---")
+
+st.subheader("📋 Provider Details")
+
 st.dataframe(
-    food.head(20),
+    providers.head(20),
     use_container_width=True
 )
