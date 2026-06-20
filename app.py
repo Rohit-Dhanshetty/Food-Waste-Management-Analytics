@@ -1,5 +1,4 @@
 import pandas as pd
-import mysql.connector
 import streamlit as st
 import plotly.express as px
 
@@ -18,32 +17,13 @@ st.markdown(
 )
 
 
-conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="rohit123",
-    database="food_waste_management"
-)
+providers = pd.read_csv("providers_data.csv")
 
-providers = pd.read_sql(
-    "SELECT * FROM providers_data",
-    conn
-)
+receivers = pd.read_csv("receivers_data.csv")
 
-receivers = pd.read_sql(
-    "SELECT * FROM receivers_data",
-    conn
-)
+food = pd.read_csv("food_listings_data.csv")
 
-food = pd.read_sql(
-    "SELECT * FROM food_listings_data",
-    conn
-)
-
-claims = pd.read_sql(
-    "SELECT * FROM claims_data_cleaned",
-    conn
-)
+claims = pd.read_csv("claims_data_cleaned.csv")
 
 st.sidebar.header("Filters")
 
